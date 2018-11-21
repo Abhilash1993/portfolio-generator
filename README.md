@@ -1,6 +1,3 @@
 # react-setup-w3
-React setup with webpack 3
+Portfolio Generator! 
 
-#### take a pull
-#### npm install
-#### npm start
