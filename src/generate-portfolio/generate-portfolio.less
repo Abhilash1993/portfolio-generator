@@ -1,0 +1,36 @@
+@import "../../utils/font.less";
+
+.generate-portfolio-wrap{
+    background-image: url("https://i.ytimg.com/vi/mI_SHuTntdc/maxresdefault.jpg") ;//url("https://wallpapertag.com/wallpaper/full/3/5/7/186532-new-space-backgrounds-hd-1920x1080.jpg");
+    width: 100vw;
+    height: 100vh;
+    font-family: EtelkaTextPro;
+    .generate-portfolio-section{
+        position: absolute;
+        width: 1000px;
+        height: 550px;
+        box-shadow: 0 0.375rem 1.25rem rgba(0,0,0,.2);
+        background: white;//#eefeff;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        border-radius: 10px;
+        padding: 20px;
+        .animation(rightToLeft 1s normal ease-in-out);
+        &.first-load{
+            display: none;
+        }
+    }
+    .next{
+        position: absolute;
+        z-index: 2;
+        color: cornflowerblue;
+        bottom: 40px;
+        right: 40px;
+        cursor: pointer;
+    }
+    .collapse{
+        .animation(collapseSection 1s normal ease-in);
+        opacity: 0;
+    }
+}
