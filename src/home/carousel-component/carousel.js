@@ -3,6 +3,10 @@ import {connect} from 'react-redux';
 import './carousel.less';
 // import ACTION from '../common/action_constants';
 import { Link } from 'react-router-dom';
+import FirstImg from '../../../assets/images/1.jpg';
+import SecondImg from '../../../assets/images/2.jpg';
+import ThirdImg from '../../../assets/images/3.jpg';
+import FourthImg from '../../../assets/images/4.jpg';
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -43,10 +47,10 @@ class Carousel extends React.Component {
                 <span id="image-3"></span>
                 <span id="image-4"></span>
                 <div id = "holder" className="image-holder">
-                    <img src = "../../assets/images/1.jpg" className = "image" />
-                    <img src = "../../assets/images/2.jpg" className = "image" />
-                    <img src = "../../assets/images/3.jpg" className = "image" />
-                    <img src = "../../assets/images/4.jpg" className = "image" />
+                    <img src = {FirstImg} className = "image" />
+                    <img src = {SecondImg} className = "image" />
+                    <img src = {ThirdImg} className = "image" />
+                    <img src = {FourthImg} className = "image" />
                 </div>
                 <div className="buttons">
                     <button className = {this.state.imageCount == 1 || this.state.imageCount == 5 ? "selected-button" : ""} onClick={()=>this.setImage(1)}></button>
