@@ -1,0 +1,46 @@
+.input-component{
+     position: relative;
+    .placeholder-lable{
+      position: absolute;
+      color: #4a4a4a;
+      font-size: 16px;
+      top: 10px;
+      transition: all .3s;
+      left: 10px;
+    }
+    .floating-label{
+      top: -20px;
+      left: 0;
+      font-size: 14px;
+      color: #5682FF;
+    }
+    .input{
+      width: 100%;
+      font-size: 16px;
+      line-height: 16px;
+      border:solid 1px #D8D4D4;
+      color: #4a4a4a;
+      padding-bottom: 10px;
+      padding-left: 10px;
+      font-size: 14px;
+      width: 400px;
+      padding-top: 10px;
+      &.textarea{
+        height: 100px;
+      }
+      &.error{
+        border: solid 1px #d0011b;
+      }
+      &.validated{
+        border: solid 1px #5682FF;
+      }
+    }
+    .input:focus{
+      border: solid 1px #5682FF;
+    }
+    .errorMsg{
+      color: #d0011b;
+      font-size: 14px;
+    }
+}
+
