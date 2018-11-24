@@ -10,6 +10,7 @@ class Carousel extends React.Component {
     this.state = {
         imageCount : 1
     };
+    let interval;
   }
 
   setImage = (n) =>{
@@ -60,13 +61,18 @@ class Carousel extends React.Component {
   }
   componentDidMount() {
         this.setImage(1);
-        setInterval(()=>{
+        this.interval = setInterval(()=>{
             let i = this.state.imageCount % 4;
             i++;
             this.setState({imageCount : i});
             this.setImage(this.state.imageCount);     
         },3000);
     }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
     
 }
 
