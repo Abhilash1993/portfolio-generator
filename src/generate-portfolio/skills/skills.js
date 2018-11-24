@@ -19,7 +19,7 @@ class Skills extends Component {
                     {3} of {this.props.all}
                 </div>
                 <div>
-                <Progressbar percentage = {this.props.step/this.props.all*100}/>
+                    <Progressbar percentage = {this.props.step/this.props.all*100}/>
                 </div>
             </div>
         );
