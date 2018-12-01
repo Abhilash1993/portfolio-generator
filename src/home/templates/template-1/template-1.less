@@ -1,0 +1,115 @@
+.template-1-root{
+    background-image: url(../../../../assets/template-1.png);
+    min-height: 948px;
+    background-size: cover;
+    padding: 20px;
+    .content-holder{
+        max-height: 892px;
+        overflow-y: scroll;    
+        font-family: Proximanova;
+        border-radius: 10px;
+        padding: 20px;
+        min-width: 800px;
+        max-width: 800px;
+        margin: 20px auto;
+        border: 1px solid;
+        -webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.75);
+        background: #5f5f5faa;
+        .header{
+            color: white;
+            font-weight: 600;
+            margin: 20px 0px;
+        }
+        .bio-root{
+            display: flex;
+            .bio-holder{
+                max-height: 150px;
+                flex: 2;
+                display: flex;
+                background: #f35151;color: white;
+                padding: 20px;
+                border-radius: 15px;
+                margin: 25px 15px 25px 0px;
+                -webkit-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.75);
+                -moz-box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.75);
+                box-shadow: 0px 0px 20px 2px rgba(0,0,0,0.75);
+                .bio{
+                    // width: 60%;
+                    padding-left: 20px;
+                    .name{
+                        font-size: 30px;
+                        font-weight: 600;
+                    }
+                }
+                .profile-img{
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    border: 1px solid;
+                    margin: 0px 26px;
+                    background: white;
+                    img{
+                        width: 100px;
+                        height: 100px;
+                        border-radius: 50%;
+                    }
+                }
+            }
+            .skillset{
+                max-height: 170px;
+                overflow: scroll;
+                flex: 1;
+                display: flex;
+                background: #f35151;
+                color: white;
+                padding: 20px;
+                flex-wrap: wrap;
+                border-radius: 15px;
+                margin: 25px 0px;
+                -webkit-box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.75);
+                -moz-box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.75);
+                box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.75);
+                div{
+                    margin: 5px;
+                }
+                .skill-head{
+                    margin: 0px 5px;
+                    font-weight: 600;
+                    width: 100%;
+                }
+            }
+
+        }
+        .sub-content-holder{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            .sub-content{
+                margin: 10px;
+                // min-width: 250px;
+                flex: 1;
+                // max-width: 300px;
+                color: #fff;
+                padding: 15px;
+                // border: 1px solid;
+                -webkit-box-shadow: 5px 7px 20px 4px rgba(0,0,0,0.75);
+                -moz-box-shadow: 5px 7px 20px 4px rgba(0,0,0,0.75);
+                box-shadow: 5px 7px 20px 4px rgba(0,0,0,0.75);
+                transition: all .3s;
+                background: #5a5a5a;
+            }
+            .sub-content:hover{
+                transform: scale(1.1);
+                margin: 30px;
+                color: #fff;
+                font-weight: 600;
+            }
+            .full-content{
+                width: 100%;
+                flex: unset;
+            }
+        }
+    }
+}
