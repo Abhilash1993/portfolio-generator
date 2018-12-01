@@ -6,6 +6,10 @@ import JsonView from '../common/components/JsonView';
 import { push } from 'react-router-redux';
 import NavBar from '../common/components/nav-bar/navbar';
 import Carousel from "./carousel-component/carousel";
+import './carousel-component/carousel.less';
+import scrollToComponent from 'react-scroll-to-component';
+import Template from "./templates/template";
+import Contact from "./contact-us/contact";
 
 class Home extends React.Component {
   constructor(props) {
@@ -15,8 +19,10 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <NavBar></NavBar>
+        <NavBar scrollToPosition = {this.scrollToPosition}></NavBar>
         <Carousel></Carousel>
+        <Template></Template>
+        <Contact></Contact>
       </div>
     );
   }

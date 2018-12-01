@@ -1,4 +1,4 @@
 const apis = {
-    getUser: 'https://api.github.com/users/Abhilash1993'
+    getUser: 'http://virtserver.swaggerhub.com/MarcoMontaltoMonella/portfolio-gen/1.0.0/user?userName=',
 };
 export default apis;
