@@ -5,9 +5,10 @@ const actions = {
         'GETUSER': 'GETUSER',
         'STOREUSER': 'STOREUSER'
     },
-    ABOUT: {
-        'GETABOUT': 'GETABOUT',
-        'LOADABOUT': 'LOADABOUT'
+    PORTFOLIO: {
+        'GET_DATA': 'GET_DATA',
+        'SEND_DATA': 'SEND_DATA',
+        'STORE_DATA': 'STORE_DATA'
     }
 };
 export default actions;

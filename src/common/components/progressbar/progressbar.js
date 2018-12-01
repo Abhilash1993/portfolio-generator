@@ -18,7 +18,7 @@ class Progressbar extends Component {
             this.setState({
                 width : props.percentage
             });
-        },1000);
+        },100);
     }
     render() {
         return (
