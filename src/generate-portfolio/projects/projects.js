@@ -33,7 +33,16 @@ next = () =>{
     const data = {
         projects : [...this.state.projects]
     };
-    this.props.next(data);
+    if(this.validate()){
+        this.setState({
+            error : ""
+        });
+        this.props.next(data);
+    }else{
+        this.setState({
+            error : "Please add at least one project"
+        });
+    }
 }
 back = () =>{
     this.props.back();
@@ -46,6 +55,19 @@ changeHandler = (id,value)=>{
     this.setState({
         projects
     });
+}
+validate = () =>{
+    let flag = true;
+    for(let i =0; i < this.state.projects.length; i++){
+        let temp = this.state.projects[i];
+        Object.keys(temp).forEach((key)=>{
+            console.log("yes",temp[key] =="");
+            if(temp[key] =="") {
+                flag = false;
+            }
+        });
+    }
+    return flag;
 }
 render() {
     return (
@@ -112,13 +134,16 @@ render() {
                 );
             })}
             <div className = "details">
-                <input type = "button" onClick = {this.addProject} value = "Add Project"/>
+                <input type = "button" className = "btn btn-info" onClick = {this.addProject} value = "Add Project"/>
             </div>
+            {
+                    this.state.error && <div className="error-section">{this.state.error}</div>
+            }
             <div className="next" >
-                <div onClick = {this.next}>Next</div>
+                <div className = "btn btn-info"onClick = {this.next}>Next</div>
                 </div>
             <div className="back">
-                    <div onClick = {this.back}>back</div>
+                    <div className = "btn btn-info"onClick = {this.back}>back</div>
             </div>
         </div>
     );

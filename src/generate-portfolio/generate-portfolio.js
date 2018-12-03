@@ -9,12 +9,13 @@ import Skills from "./skills/skills";
 import ProfessionalExperience from "./professional-experience/professional-experience";
 import { connect } from "react-redux";
 import ACTION from '../common/action_constants';
-
+import BackImg from "../../assets/header.jpg";
+import NavBar from "../common/components/nav-bar/navbar";
 class GeneratePortfolio extends Component {
     constructor(props){
         super(props);
         this.state = {
-            next : 6
+            next : 1
        };
     }
     next = (data) =>{
@@ -35,7 +36,6 @@ class GeneratePortfolio extends Component {
         }
     }
     componentDidMount(){
-        this.props.dispatch({type : ACTION.PORTFOLIO.GET_DATA});
         setTimeout(()=>{
             this.setState({
                 loaded : true
@@ -51,7 +51,8 @@ class GeneratePortfolio extends Component {
         const next = this.state.next; 
         const all = 7;
         return (
-            <div className = "generate-portfolio-wrap">
+            <div style = {{backgroundImage: `url(${BackImg})`}}className = "generate-portfolio-wrap">
+                <NavBar scrollToPosition = {this.scrollToPosition}></NavBar>
                 <div style = {{zIndex:"1"}}className = {next >= 1 ? "generate-portfolio-section appear" : "generate-portfolio-section"}>
                     <div>
                         <AboutMe step = {this.state.next} all = {all} next = {this.next}/>

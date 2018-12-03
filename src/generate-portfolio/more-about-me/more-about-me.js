@@ -39,7 +39,7 @@ class MoreAboutMe extends Component {
                     <Progressbar percentage = {this.props.step/this.props.all*100}/>
                 </div>
                 <div className = "details">
-                    <div>
+                    <div className="content">
                         <InputComponent 
                         error = "" 
                         id = "more" 
@@ -51,10 +51,10 @@ class MoreAboutMe extends Component {
                     </div>
                 </div>
                 <div className="next" >
-                  <div onClick = {this.next}>Next</div>
+                  <div className = "btn btn-info"onClick = {this.next}>Next</div>
                 </div>
                 <div className="back">
-                	<div onClick = {this.back}>back</div>
+                	<div className = "btn btn-info"onClick = {this.back}>back</div>
                 </div>
             </div>
         );

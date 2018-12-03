@@ -84,6 +84,7 @@ class Education extends Component {
                 <div>
                      <Progressbar percentage = {this.props.step/this.props.all*100}/>
                 </div>
+                <div className = "content">
                 {this.state.university.map((university,index)=>{
                     return (
                         <div className = "university-section" key = {index}>
@@ -140,17 +141,18 @@ class Education extends Component {
                         </div>
                     );
                 })}
+                </div>
                 <div>
-                    <input type = "button" onClick = {this.addUniversity} value = "Add Another University"/>
+                    <input type = "button" className = "btn btn-info" onClick = {this.addUniversity} value = "Add Another University"/>
                 </div>
                 {
                     this.state.error && <div className="error-section">{this.state.error}</div>
                 }
                 <div className="next" >
-                        <div onClick = {this.next}>Next</div>
+                        <div className = "btn btn-info"onClick = {this.next}>Next</div>
                 </div>
                 <div className="back">
-                        <div onClick = {this.back}>back</div>
+                        <div className = "btn btn-info" onClick = {this.back}>back</div>
                 </div>
             </div>
         );

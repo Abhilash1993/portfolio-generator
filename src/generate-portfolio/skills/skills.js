@@ -73,7 +73,7 @@ class Skills extends Component {
                 <div>
                     <Progressbar percentage = {this.props.step/this.props.all*100}/>
                 </div>
-                <form onSubmit = {this.addSkill}>
+                <form className = "content"onSubmit = {this.addSkill}>
                     <div className = "skill-section">
                         <div className = "skill-input">
                             <InputComponent 
@@ -86,7 +86,7 @@ class Skills extends Component {
                             focus = {true}/>
                         </div>
                         <div>
-                            <input type = "submit" className = "btn" onClick = {this.addSkill} value = "Add a skill"/>
+                            <input type = "submit" className = "btn btn-info" onClick = {this.addSkill} value = "Add a skill"/>
                         </div>
                         <div className = "skill-added">
                             {
@@ -105,10 +105,10 @@ class Skills extends Component {
                     this.state.error && <div className="error-section">{this.state.error}</div>
                 }
                 <div className="next" >
-                        <div onClick = {this.next}>Next</div>
+                        <div className = "btn btn-info"onClick = {this.next}>Next</div>
                 </div>
                 <div className="back">
-                        <div onClick = {this.back}>back</div>
+                        <div className = "btn btn-info"onClick = {this.back}>back</div>
                 </div>
             </div>
         );

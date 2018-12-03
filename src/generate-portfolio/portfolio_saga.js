@@ -11,44 +11,34 @@ function* getPortfolioData(action) {
     yield put({type: ACTION.HOME.STOREUSER, user: data});
 }
 function* setPortfolioData(action) {
-    const userData = {
-        "username": "Abhilash",
-        "about": {
-          "name": "Jack",
-          "surname": "Reacher",
-          "email": "abhilash@gmail.com",
-          "phone": "408-867-5301"
-        },
-        "education": [
-          {
-            "name": "New York University",
-            "startDate": {},
-            "endDate": {}
-          }
-        ],
-        "skills": [
-          "JavaScript"
-        ],
-        "professional_exp": [
-          {
-            "company": "Google",
-            "startDate": {},
-            "endDate": {}
-          }
-        ],
-        "projects": [
-          {
-            "title": "My personal website",
-            "details": "I built my personal website using NodeJS",
-            "date": {}
-          }
-        ],
-        "more": "In my free time I like to go fishing"
-      };
-    const data = yield call(postDataWithToken, Api.setuser, JSON.stringify(userData));
+    const data = yield call(postDataWithToken, Api.setuser, JSON.stringify(action.data));
+    let cname = "username", cvalue = data.username, exdays=10;
+    setCookie(cname, cvalue, exdays);
     yield put({type:ACTION.HOME.LOADHOME});
     yield put({type: ACTION.HOME.STOREUSER, user: data});
 }
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+      }
+  }
+  return "";
+}
+
 
 export {
     getPortfolioData,

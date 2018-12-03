@@ -44,7 +44,7 @@ class ProfessionalExperience extends Component {
         const data = {
             professional_exp : [...this.state.professional_exp]
         };
-        if(this.validate()){
+        if(true){
             this.setState({
                 error : ""
             });
@@ -147,16 +147,16 @@ class ProfessionalExperience extends Component {
                             );
                         })}
                 <div>
-                    <input type = "button" onClick = {this.addProfessionalExperience} value = "Add Company"/>
+                    <input type = "button" className = "btn btn-info"onClick = {this.addProfessionalExperience} value = "Add Company"/>
                 </div>
                 {
                     this.state.error && <div className="error-section">{this.state.error}</div>
                 }
                 <div className="next" >
-                        <div onClick = {this.next}>Next</div>
+                        <div className = "btn btn-info"onClick = {this.next}>Next</div>
                 </div>
                 <div className="back">
-                        <div onClick = {this.back}>back</div>
+                        <div className = "btn btn-info"onClick = {this.back}>back</div>
                 </div>
             </div>
         );

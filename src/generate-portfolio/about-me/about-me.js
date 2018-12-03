@@ -110,7 +110,7 @@ class AboutMe extends Component {
                     this.state.error && <div className="error-section">{this.state.error}</div>
                 }
                 <div className="next">
-                        <div onClick = {this.next}>Next</div>
+                        <div className = "btn btn-info" onClick = {this.next}>Next</div>
                 </div>
             </div>
         );
