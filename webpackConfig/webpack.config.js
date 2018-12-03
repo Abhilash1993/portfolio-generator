@@ -16,12 +16,12 @@ const devSpecifics = {
   devtool: "source-map",
   devServer: {
     hot: true,
-    host : "192.168.1.82",
+    host : "localhost",
     contentBase: path.join("./dist/"),
     publicPath: "/",
     compress: true,
     historyApiFallback: true,
-    port: 9000,
+    port: 9001,
   }
 };
 

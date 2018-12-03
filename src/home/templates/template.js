@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import './template.less';
 // import ACTION from '../common/action_constants';
+import { push } from 'react-router-redux';
 import { Link } from 'react-router-dom';
 import firstImg from '../../../assets/template1.png';
 import secondImg from '../../../assets/template2.png';
@@ -17,30 +18,36 @@ class Templates extends React.Component {
         templateData : [{
             project : "Elegant Template",
             category : "Free trial for a month!",
-            imageUrl : firstImg
+            imageUrl : firstImg,
+            route : "/template-1"
         },{
             project : "Professional",
             category : "Free Trial for a month!",
-            imageUrl : secondImg
+            imageUrl : secondImg,
+            route : "/template-2"
         },{
             project : "Project C",
             category : "Category C",
-            imageUrl : ThirdImg
+            imageUrl : ThirdImg,
+            route : null
         },{
             project : "Project D",
             category : "Category D",
-            imageUrl : FourthImg
+            imageUrl : FourthImg,
+            route : null
         },{
             project : "Project E",
             category : "Category E",
-            imageUrl : fifthImg
+            imageUrl : fifthImg,
+            route : null
         },{
             project : "Project F",
             category : "Category F",
-            imageUrl : sixthImg
+            imageUrl : sixthImg,
+            route : null
         }]
     };
-  }
+  } 
 
   
 
@@ -56,7 +63,7 @@ class Templates extends React.Component {
                         
                             
                                     <div className="col-lg-4 col-sm-6">
-                                        <a className="portfolio-box" href={template.imageUrl}>
+                                        <a className="portfolio-box" onClick = {() => this.props.goToTemplate(template.route)}>
                                         <img className="img-fluid" src={template.imageUrl} alt=""/>
                                         <div className="portfolio-box-caption">
                                             <div className="portfolio-box-caption-content">
@@ -90,7 +97,6 @@ class Templates extends React.Component {
   componentDidMount() {
   }
   componentWillReceiveProps(newProps){
-    // console.log(newProps);
   }
 }
 

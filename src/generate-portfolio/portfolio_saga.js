@@ -12,7 +12,7 @@ function* getPortfolioData(action) {
 }
 function* setPortfolioData(action) {
     const data = yield call(postDataWithToken, Api.setuser, JSON.stringify(action.data));
-    let cname = "username", cvalue = data.username, exdays=10;
+    let cname = "username", cvalue = action.data.username, exdays=10;
     setCookie(cname, cvalue, exdays);
     yield put({type:ACTION.HOME.LOADHOME});
     yield put({type: ACTION.HOME.STOREUSER, user: data});
