@@ -1,9 +1,11 @@
 import { takeEvery } from 'redux-saga/effects';
 import ACTION from './common/action_constants';
-import {home} from './home/home_saga';
 import {about} from './about/about_saga';
+import {getPortfolioData, setPortfolioData} from "./generate-portfolio/portfolio_saga";
+import {home} from "./home/home_saga";
 
 export default () => [
-  takeEvery(ACTION.HOME.GETHOME, home),
-  takeEvery(ACTION.ABOUT.GETABOUT, about)
+  takeEvery(ACTION.PORTFOLIO.GET_DATA, getPortfolioData),
+  takeEvery(ACTION.PORTFOLIO.SEND_DATA, setPortfolioData),
+  takeEvery(ACTION.HOME.GETHOME, home)
 ];

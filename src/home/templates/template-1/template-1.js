@@ -15,7 +15,7 @@ class Template1 extends React.Component {
   
 
   render() {
-      console.log(this.props);
+    console.log(this.props.home.user[0] , "template 1");
     const user = this.props.home.user[0];
     return (
     <div className = "template-1-root">

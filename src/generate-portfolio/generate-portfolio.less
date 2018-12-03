@@ -3,42 +3,61 @@
 body{
     overflow-x: hidden;
 }
+html{
+    height:100%;
+}
 .generate-portfolio-wrap{
     background-image: url("https://i.ytimg.com/vi/mI_SHuTntdc/maxresdefault.jpg") ;//url("https://wallpapertag.com/wallpaper/full/3/5/7/186532-new-space-backgrounds-hd-1920x1080.jpg");
     width: 100vw;
     height: 100vh;
     font-family: ProximaNova;
-    overflow-x: hidden;
+    position: relative;
+    // overflow: hidden;
     .generate-portfolio-section{
         position: absolute;
         width: 1000px;
-        height: 550px;
+        height: 630px;
         box-shadow: 0 0.375rem 1.25rem rgba(0,0,0,.2);
         background: white;//#eefeff;
         top: 50%;
-        left: 150%;
+        left: 50%;
         transform: translate(-50%,-50%);
         border-radius: 10px;
         padding: 40px;
-        transition: left 1s;
+        display: none;
+        overflow-y: scroll;
         &.appear{
-            left: 50%;
+            display: block;
         }
     }
     .next{
-        position: absolute;
         z-index: 10;
         color: cornflowerblue;
-        bottom: 60px;
-        right: 60px;
         cursor: pointer;
+        float: right;
     }
     .back{
-        position: absolute;
         z-index: 10;
         color: cornflowerblue;
-        bottom: 60px;
-        right: 120px;
         cursor: pointer;
+        float: right;
+        margin-right: 30px;
     }
 }
+
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+    .generate-portfolio-wrap{
+        overflow: hidden;
+        .generate-portfolio-section{
+            width: 95%;
+        }
+    }
+  }
+  @media (max-width: 767px) {
+    .generate-portfolio-wrap{
+        overflow: hidden;
+        .generate-portfolio-section{
+            width: 95%;
+        }
+    }
+  }

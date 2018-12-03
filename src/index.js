@@ -22,7 +22,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
   rootReducers,
-  applyMiddleware(sagaMiddleware, logger,historyMiddleware)
+  applyMiddleware(sagaMiddleware,historyMiddleware)
 );
 
 let sagaTask = sagaMiddleware.run(function* () {

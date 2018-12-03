@@ -19,6 +19,33 @@ class AboutMe extends Component {
             [id] : value
         });
     }
+    next = () =>{
+        const data = {
+            username : this.state.email,
+            about : {
+                name: this.state.name,
+                surname: "",
+                email: this.state.email,
+                phone: this.state.phone
+            },
+            education: [],
+            skills: [],
+            professional_exp: [],
+            projects: [],
+            more: ""
+        };
+        if(this.state.name != "" && this.state.email !="" && this.state.address != "" && this.state.phone !="")
+        {
+            this.props.next(data);
+            this.setState({
+                error : ""
+            });
+        }else{
+            this.setState({
+                error : "Please enter all the details"
+            });
+        }   
+    }
     render() {
         return (
             <div className = "about-me-wrap">
@@ -71,13 +98,19 @@ class AboutMe extends Component {
                     <div>
                         <InputComponent 
                         error = "" 
-                        id = "phone" 
+                        id = "address" 
                         placeholder = {"Address"} 
-                        value = {this.state.phone} 
+                        value = {this.state.address} 
                         type = "textarea" 
                         changeHandler = {this.changeHandler} 
                         focus = {false}/>
                     </div>
+                </div>
+                {
+                    this.state.error && <div className="error-section">{this.state.error}</div>
+                }
+                <div className="next">
+                        <div className = "btn btn-info" onClick = {this.next}>Next</div>
                 </div>
             </div>
         );

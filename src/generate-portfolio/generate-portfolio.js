@@ -7,17 +7,22 @@ import Projects from "./projects/projects";
 import Preview from "./preview/preview";
 import Skills from "./skills/skills";
 import ProfessionalExperience from "./professional-experience/professional-experience";
-
+import { connect } from "react-redux";
+import ACTION from '../common/action_constants';
+import BackImg from "../../assets/header.jpg";
+import NavBar from "../common/components/nav-bar/navbar";
 class GeneratePortfolio extends Component {
     constructor(props){
         super(props);
         this.state = {
-            next : 1,
-            loaded : false 
-        };
+            next : 1
+       };
     }
-    next = () =>{
-        if(this.state.next <6){
+    next = (data) =>{
+        console.log(data);
+        this.storeData(data);
+        console.log(this.props.portfolio);
+        if(this.state.next <=7){
             this.setState({
                 next : this.state.next + 1
             });
@@ -38,89 +43,58 @@ class GeneratePortfolio extends Component {
         },1000);
         window.scrollTo(0,0);
     }
+    storeData = (data) =>{
+        const {dispatch} = this.props;
+        dispatch({type : ACTION.PORTFOLIO.STORE_DATA, data });
+    }
     render() {
         const next = this.state.next; 
-        const loaded = this.state.loaded;
         const all = 7;
         return (
-            <div className = "generate-portfolio-wrap">
+            <div style = {{backgroundImage: `url(${BackImg})`}}className = "generate-portfolio-wrap">
+                <NavBar scrollToPosition = {this.scrollToPosition}></NavBar>
                 <div style = {{zIndex:"1"}}className = {next >= 1 ? "generate-portfolio-section appear" : "generate-portfolio-section"}>
                     <div>
-                        <AboutMe step = {this.state.next} all = {all}/>
-                    </div>
-                    <div className="next">
-                        <div onClick = {this.next}>Next</div>
+                        <AboutMe step = {this.state.next} all = {all} next = {this.next}/>
                     </div>
                 </div>
                 <div style = {{zIndex:"2"}}className = {next >= 2 ? "generate-portfolio-section appear" : "generate-portfolio-section"}>
                     <div>
-                        <Education step = {this.state.next} all = {all}/>
-                    </div>
-                    <div className="next" >
-                        <div onClick = {this.next}>Next</div>
-                    </div>
-                    <div className="back">
-                        <div onClick = {this.back}>back</div>
+                        <Education step = {this.state.next} all = {all} next = {this.next} back = {this.back}/>
                     </div>
                 </div>
                 <div style = {{zIndex:"3"}}className = {next >= 3 ? "generate-portfolio-section appear" : "generate-portfolio-section"}>
                     <div>
-                        <Skills step = {this.state.next} all = {all}/>
+                        <Skills step = {this.state.next} all = {all} next = {this.next} back = {this.back}/>
                     </div>
-                        <div className="next"> 
-                            <div onClick = {this.next}>Next</div>
-                        </div>
-                        <div className="back">
-                            <div onClick = {this.back}>back</div>
-                        </div>
                 </div>
                 <div style = {{zIndex:"4"}}className = {next >= 4 ? "generate-portfolio-section appear" : "generate-portfolio-section"}>
                     <div>
-                        <ProfessionalExperience step = {this.state.next} all = {all}/>
+                        <ProfessionalExperience step = {this.state.next} all = {all} next = {this.next} back = {this.back}/>
                     </div>
-                        <div className="next"> 
-                            <div onClick = {this.next}>Next</div>
-                        </div>
-                        <div className="back">
-                            <div onClick = {this.back}>back</div>
-                        </div>
                 </div>
                 <div style = {{zIndex:"5"}}className = {next >= 5 ? "generate-portfolio-section appear" : "generate-portfolio-section"}>
                     <div>
-                        <Projects step = {this.state.next} all = {all}/>
+                        <Projects step = {this.state.next} all = {all} next = {this.next} back = {this.back}/>
                     </div>
-                        <div className="next"> 
-                            <div onClick = {this.next}>Next</div>
-                        </div>
-                        <div className="back">
-                            <div onClick = {this.back}>back</div>
-                        </div>
                 </div>
                 <div style = {{zIndex:"6"}}className = {next >= 6 ? "generate-portfolio-section appear" : "generate-portfolio-section"}>
                     <div>
-                        <MoreAboutMe step = {this.state.next} all = {all}/>
+                        <MoreAboutMe step = {this.state.next} all = {all} next = {this.next} back = {this.back}/>
                     </div>
-                        <div className="next"> 
-                            <div onClick = {this.next}>Next</div>
-                        </div>
-                        <div className="back">
-                            <div onClick = {this.back}>back</div>
-                        </div>
                 </div>
                 <div style = {{zIndex:"7"}}className = {next >= 7 ? "generate-portfolio-section appear" : "generate-portfolio-section"}>
                     <div>
-                        <Preview step = {this.state.next} all = {all}/>
+                        <Preview step = {this.state.next} all = {all} next = {this.next} back = {this.back}/>
                     </div>
-                        <div className="next"> 
-                            <div onClick = {this.next}>Next</div>
-                        </div>
-                        <div className="back">
-                            <div onClick = {this.back}>back</div>
-                        </div>
                 </div>
             </div>
         );
     }
 }
-
-export default GeneratePortfolio;
+const mapStateToProps = state => {
+    return {
+        portfolio: state.portfolio
+    };
+  };
+export default connect(mapStateToProps)(GeneratePortfolio);
