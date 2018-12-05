@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import './carousel.less';
 // import ACTION from '../common/action_constants';
 import { Link } from 'react-router-dom';
+import { push } from 'react-router-redux';
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class Carousel extends React.Component {
   
 
   render() {
+      const self = this;
     return (
     <div>
         <header className="masthead text-center text-white d-flex">
@@ -63,7 +65,7 @@ class Carousel extends React.Component {
                         <h2 className="section-heading text-white">We have got what you need!</h2>
                         <hr className="light my-4"></hr>
                         <p className="text-faded mb-4">Portfolio Generator has everything you need to get your new Online Resume up and running in no time! All of the templates and themes are ready to be used, Start now!, and easy to use. No strings attached!</p>
-                        <a className="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
+                        <a className="btn btn-light btn-xl js-scroll-trigger"  onClick = {()=> self.props.dispatch(push('/generate'))}>Get Started!</a>
                     </div>
                 </div>
             </div>

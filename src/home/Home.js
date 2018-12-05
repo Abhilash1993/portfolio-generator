@@ -59,7 +59,7 @@ class Home extends React.Component {
     return (
       <div>
         <NavBar scrollToPosition = {this.scrollToPosition}></NavBar>
-        <Carousel></Carousel>
+        <Carousel dispatch = {this.props.dispatch}></Carousel>
         <Template goToTemplate = {this.goToTemplate}></Template>
         {
           this.state.modal && <ModalPopup toggleModal = {this.toggleModal} header = {this.state.messageHead} body = {this.state.messageBody}/>
