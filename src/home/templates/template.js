@@ -88,7 +88,7 @@ class Templates extends React.Component {
      <section className="bg-dark text-white">
       <div className="container text-center">
         <h2 className="mb-4">Try out the templates!</h2>
-        <a className="btn btn-light btn-xl sr-button" href="">Go!</a>
+        <a className="btn btn-light btn-xl sr-button" href="/generate">Go!</a>
       </div>
     </section>
     </div>
