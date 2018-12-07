@@ -11,6 +11,8 @@ class AboutMe extends Component {
             email : "",
             phone : "",
             address : "",
+            headline : "",
+            interests : "",
             step : this.props.step
         };
     }
@@ -26,16 +28,15 @@ class AboutMe extends Component {
                 name: this.state.name,
                 surname: "",
                 email: this.state.email,
-                phone: this.state.phone
-            },
-            education: [],
-            skills: [],
-            professional_exp: [],
-            projects: [],
-            more: ""
+                phone: this.state.phone,
+                address : this.state.address,
+                headline : this.state.headline,
+                interests : this.state.interests
+            }
         };
         if(this.state.name != "" && this.state.email !="" && this.state.address != "" && this.state.phone !="")
         {
+            this.props.getData(this.state.email);
             this.props.next(data);
             this.setState({
                 error : ""
@@ -58,52 +59,78 @@ class AboutMe extends Component {
                 <div>
                 <Progressbar percentage = {this.props.step/this.props.all*100}/>
                 </div>
-                <div className = "details">
-                    <div>
-                        <InputComponent 
-                        error = "" 
-                        id = "name" 
-                        placeholder = {"Name"} 
-                        value = {this.state.name} 
-                        type = "text" 
-                        changeHandler = {this.changeHandler} 
-                        focus = {true}/>
+                <div className = "details-wrap">
+                    <div className = "details">
+                        <div>
+                            <InputComponent 
+                            error = "" 
+                            id = "name" 
+                            placeholder = {"Name"} 
+                            value = {this.state.name} 
+                            type = "text" 
+                            changeHandler = {this.changeHandler} 
+                            focus = {true}/>
+                        </div>
                     </div>
-                </div>
-                <div className = "details">
-                    <div>
-                        <InputComponent 
-                        error = "" 
-                        id = "email" 
-                        placeholder = {"Email ID"} 
-                        value = {this.state.email} 
-                        type = "text" 
-                        changeHandler = {this.changeHandler} 
-                        focus = {false}/>
+                    <div className = "details">
+                        <div>
+                            <InputComponent 
+                            error = "" 
+                            id = "email" 
+                            placeholder = {"Email ID"} 
+                            value = {this.state.email} 
+                            type = "text" 
+                            changeHandler = {this.changeHandler} 
+                            focus = {false}/>
+                        </div>
                     </div>
-                </div>
-                <div className = "details">
-                    <div>
-                        <InputComponent 
-                        error = "" 
-                        id = "phone" 
-                        placeholder = {"Phone number"} 
-                        value = {this.state.phone} 
-                        type = "text" 
-                        changeHandler = {this.changeHandler} 
-                        focus = {false}/>
+                    <div className = "details">
+                        <div>
+                            <InputComponent 
+                            error = "" 
+                            id = "phone" 
+                            placeholder = {"Phone number"} 
+                            value = {this.state.phone} 
+                            type = "text" 
+                            changeHandler = {this.changeHandler} 
+                            focus = {false}/>
+                        </div>
                     </div>
-                </div>
-                <div className = "details">
-                    <div>
-                        <InputComponent 
-                        error = "" 
-                        id = "address" 
-                        placeholder = {"Address"} 
-                        value = {this.state.address} 
-                        type = "textarea" 
-                        changeHandler = {this.changeHandler} 
-                        focus = {false}/>
+                    <div className = "details">
+                        <div>
+                            <InputComponent 
+                            error = "" 
+                            id = "address" 
+                            placeholder = {"Address"} 
+                            value = {this.state.address} 
+                            type = "textarea" 
+                            changeHandler = {this.changeHandler} 
+                            focus = {false}/>
+                        </div>
+                    </div>
+                    <div className = "details">
+                        <div>
+                            <InputComponent 
+                            error = "" 
+                            id = "headline" 
+                            placeholder = {"Headline"} 
+                            value = {this.state.headline} 
+                            type = "text" 
+                            changeHandler = {this.changeHandler} 
+                            focus = {false}/>
+                        </div>
+                    </div>
+                    <div className = "details">
+                        <div>
+                            <InputComponent 
+                            error = "" 
+                            id = "interests" 
+                            placeholder = {"My Interests"} 
+                            value = {this.state.interests} 
+                            type = "textarea" 
+                            changeHandler = {this.changeHandler} 
+                            focus = {false}/>
+                        </div>
                     </div>
                 </div>
                 {

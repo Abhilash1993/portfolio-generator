@@ -5,15 +5,17 @@ import { getDataWithToken, postDataWithToken } from '../../utils/ajax';
 import Api from '../common/api_config';
 
 function* getPortfolioData(action) {
-    const data = yield call(getDataWithToken, Api.getUser);
-    console.log(JSON.parse(data.body),"portfolio data.body");
-    yield put({type:ACTION.HOME.LOADHOME});
-    yield put({type: ACTION.HOME.STOREUSER, user: data});
+    const data = yield call(getDataWithToken, Api.getUser+action.data);
+    let tempData = JSON.parse(data.body);
+    if(JSON.parse(data.statusCode) == 200){
+        yield put({type: ACTION.PORTFOLIO.STORE_DATA, data: tempData});
+    }
 }
 function* setPortfolioData(action) {
     const data = yield call(postDataWithToken, Api.setuser, JSON.stringify(action.data));
     let cname = "username", cvalue = action.data.username, exdays=10;
     setCookie(cname, cvalue, exdays);
+    yield put({type:ACTION.PORTFOLIO.STATUS, data : true});
     yield put({type:ACTION.HOME.LOADHOME});
     yield put({type: ACTION.HOME.STOREUSER, user: data});
 }

@@ -70,6 +70,13 @@ class ProfessionalExperience extends Component {
         }
         return flag;
     }
+    componentWillReceiveProps(props){
+        if(props.portfolio.professional_exp && props.portfolio.professional_exp.length > 0){
+            this.setState({
+                professional_exp : props.portfolio.professional_exp
+            });
+        }
+    }
     render() {
         return (
             <div className = "professional-exp-wrap">
@@ -82,6 +89,7 @@ class ProfessionalExperience extends Component {
                 <div>
                     <Progressbar percentage = {this.props.step/this.props.all*100}/>
                 </div>
+                <div className = "details-wrap">
                 {this.state.professional_exp.map((professional_exp,index)=>{
                             return(
                                 <div key = {index}>
@@ -146,9 +154,11 @@ class ProfessionalExperience extends Component {
                                 </div>
                             );
                         })}
-                <div>
+                        <div>
                     <input type = "button" className = "btn btn-info"onClick = {this.addProfessionalExperience} value = "Add Company"/>
                 </div>
+                    </div>    
+                
                 {
                     this.state.error && <div className="error-section">{this.state.error}</div>
                 }

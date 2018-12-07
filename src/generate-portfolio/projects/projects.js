@@ -69,6 +69,13 @@ validate = () =>{
     }
     return flag;
 }
+componentWillReceiveProps(props){
+    if(props.portfolio.projects && props.portfolio.projects.length > 0){
+        this.setState({
+            projects : props.portfolio.projects
+        });
+    }
+}
 render() {
     return (
         <div className = "project-wrap">
@@ -81,6 +88,7 @@ render() {
             <div>
                 <Progressbar percentage = {this.props.step/this.props.all*100}/>
             </div>
+            <div className = "details-wrap">
             {this.state.projects.map((project,index)=>{
                 return(
                     <div key = {index}>
@@ -135,6 +143,7 @@ render() {
             })}
             <div className = "details">
                 <input type = "button" className = "btn btn-info" onClick = {this.addProject} value = "Add Project"/>
+            </div>
             </div>
             {
                     this.state.error && <div className="error-section">{this.state.error}</div>
