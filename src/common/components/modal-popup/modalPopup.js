@@ -16,19 +16,35 @@ export default class ModalPopup extends React.Component {
 				<div className = "modal-root">
                     <div id="myModal" className="modal">
 
-                        <div className="modal-content">
-                            <div className="modal-header">
-                            <h2>{this.props.header}</h2>
-                            <span className="close" onClick = {this.props.toggleModal}>&times;</span>
+                        {  (this.props.messageType === 'premium') &&
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                <h2>{this.props.header}</h2>
+                                <span className="close" onClick = {this.props.toggleModal}>&times;</span>
+                                </div>
+                                <div className="modal-body">
+                                    <p>{this.props.body}</p>
+                                </div>
+                                <div className="modal-footer">
+                                    <button className = "btn btn-info accept" onClick = {this.props.toggleModal}>Accept</button>
+                                    <button className = "btn btn-info decline" onClick = {this.props.toggleModal}>Decline</button>
+                                </div>
                             </div>
-                            <div className="modal-body">
-                                <p>{this.props.body}</p>
+                        }
+                        {  (this.props.messageType === 'success' || this.props.messageType === 'failure') &&
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                <h2>{this.props.header}</h2>
+                                <span className="close" onClick = {this.props.toggleModal}>&times;</span>
+                                </div>
+                                <div className="modal-body">
+                                    <p>{this.props.body}</p>
+                                </div>
+                                <div className="modal-footer">
+                                    <button className = "btn btn-info accept" onClick = {this.props.toggleModal}>Okay</button>
+                                </div>
                             </div>
-                            <div className="modal-footer">
-                                <button className = "btn btn-info accept" onClick = {this.props.toggleModal}>Accept</button>
-                                <button className = "btn btn-info decline" onClick = {this.props.toggleModal}>Decline</button>
-                            </div>
-                        </div>
+                        }
                     </div>
 				</div>
 			);

@@ -29,6 +29,7 @@ class Template1 extends React.Component {
                                             <div className="name">{user.about.name}<span> </span>{this.props.home.user[0].about.surname}</div>
                                             <div>{user.about.email}</div>
                                             <div>{user.about.phone}</div>
+                                            <div>{user.about.address}</div>
                                             <div>{user.about.headline}</div>
                                         </div>
                     }
@@ -54,6 +55,7 @@ class Template1 extends React.Component {
                                 <div className = "sub-content">
                                     <div>{eduData.degree}</div>
                                     <div>{eduData.name}</div>
+                                    <div><span>{eduData.major} {eduData.GPA}</span></div>
                                     <div>{eduData.location}</div>
                                     <div>{eduData.startDate} - {eduData.endDate}</div>
                                 </div>
@@ -72,6 +74,7 @@ class Template1 extends React.Component {
                                 <div>{exp.company}</div>
                                 <div>{exp.location}</div>
                                 <div>{exp.role}</div>
+                                <div>{exp.details}</div>
                                 <div>{exp.startDate} - {exp.endDate}</div>
                             </div>
                         );
@@ -92,6 +95,12 @@ class Template1 extends React.Component {
                         );
                     })
                 }
+                </div>
+                <h5 className = "header">MORE</h5>
+                <div className = "sub-content-holder">
+                    <div className = "sub-content full-content">
+                        {(user) && <div>{user.more}</div>}
+                    </div>
                 </div>
         </div>
     </div>

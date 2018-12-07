@@ -87,7 +87,7 @@ class Carousel extends React.Component {
                 this.state.servicesData.map((service,index) =>{
                     return (
 
-                        <div className="col-lg-3 col-md-6 text-center">
+                        <div key = {index} className="col-lg-3 col-md-6 text-center">
                             <div className="service-box mt-5 mx-auto">
                                 <i className={service.className}></i>
                                 <h3 className="mb-3">{service.heading}</h3>

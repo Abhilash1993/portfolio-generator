@@ -58,11 +58,11 @@ class Templates extends React.Component {
         <div className="container-fluid p-0">
           <div className="row no-gutters popup-gallery">
             {
-                this.state.templateData.map((template)=>{
+                this.state.templateData.map((template, index)=>{
                     return (
                         
                             
-                                    <div className="col-lg-4 col-sm-6">
+                                    <div key = {index} className="col-lg-4 col-sm-6">
                                         <a className="portfolio-box" onClick = {() => this.props.goToTemplate(template.route)}>
                                         <img className="img-fluid" src={template.imageUrl} alt=""/>
                                         <div className="portfolio-box-caption">
@@ -88,7 +88,7 @@ class Templates extends React.Component {
      <section className="bg-dark text-white">
       <div className="container text-center">
         <h2 className="mb-4">Try out the templates!</h2>
-        <a className="btn btn-light btn-xl sr-button" href="">Go!</a>
+        <a className="btn btn-light btn-xl sr-button" href="/generate">Go!</a>
       </div>
     </section>
     </div>
