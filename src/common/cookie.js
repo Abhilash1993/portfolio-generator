@@ -22,4 +22,8 @@ function getCookie(cname) {
     return "";
   }
 
-  export {getCookie,setCookie};
+  function deleteCookie(cname) {
+    document.cookie = cname+"=;path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+  }
+
+  export {getCookie, setCookie, deleteCookie};
