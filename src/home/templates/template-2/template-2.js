@@ -66,11 +66,11 @@ class Template2 extends React.Component {
             <h1 className="mb-0 header1">  {user.about.surname}
               <span className="text-primary">{user.about.name}</span>
             </h1>
-            <div className="subheading mb-5">·{user.about.phone}·
+            <div className="subheading mb-5"> {user.about.phone} · {user.about.address} · 
             <br></br>
-              <a href="mailto:name@email.com"> {user.about.email}</a>
+              <a href="mailto:name@email.com">{user.about.email}</a>
             </div>
-            <p className="lead mb-5">{user.more}</p>
+            <p className="lead mb-5">{user.about.interests}</p>
             <div className="social-icons">
               <a href="#">
                 <i className="fab fa-linkedin-in"></i>
@@ -102,6 +102,7 @@ class Template2 extends React.Component {
                     <h3 className="mb-0 header3">{exp.company}</h3>
                     <div className="subheading mb-3">{exp.role}</div>
                     <p>{exp.location}</p>
+                    <p>{exp.details}</p>
                   </div>
                   <div className="resume-date text-md-right">
                     <span className="text-primary">{exp.startDate} - {exp.endDate}</span>
@@ -126,8 +127,8 @@ class Template2 extends React.Component {
                   <div className="resume-content mr-auto">
                     <h3 className="mb-0 header3">{edu.name}, {edu.location}</h3>
                     <div className="subheading mb-3">{edu.degree}</div>
-                    <div>Computer Science - Web Development Track</div>
-                    <p>GPA: 3.23</p>
+                    <div>{edu.major}</div>
+                    <p>{edu.GPA}</p>
                   </div>
                   <div className="resume-date text-md-right">
                     <span className="text-primary">{edu.startDate} - {edu.endDate}</span>

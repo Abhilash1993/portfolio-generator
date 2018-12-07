@@ -19,7 +19,8 @@ class Home extends React.Component {
     this.state = {
       modal : false,
       messageHead : "",
-      messageBody : ""
+      messageBody : "",
+      messageType : ""
     };
   }
 
@@ -40,12 +41,16 @@ class Home extends React.Component {
     else{
       this.toggleModal();
       this.setState({
+        messageType : "premium",
         messageHead : "Premium Member?",
         messageBody : "Become a premium member and gain access to all the templates, just by paying $5 per month"
       });
     }
   }
 
+  scrollToPosition = () =>{
+    scrollToComponent(this.template, { offset: -100, align: 'top', duration: 1500});
+  }
 
   toggleModal = () =>{
     console.log("COMING SOON! NEED PREMIUM MEMBERSHIP");
@@ -59,10 +64,10 @@ class Home extends React.Component {
     return (
       <div>
         <NavBar scrollToPosition = {this.scrollToPosition}></NavBar>
-        <Carousel></Carousel>
-        <Template goToTemplate = {this.goToTemplate}></Template>
+        <Carousel dispatch = {this.props.dispatch}></Carousel>
+        <Template ref={(Template) => { this.template = Template; }} goToTemplate = {this.goToTemplate}></Template>
         {
-          this.state.modal && <ModalPopup toggleModal = {this.toggleModal} header = {this.state.messageHead} body = {this.state.messageBody}/>
+          this.state.modal && <ModalPopup toggleModal = {this.toggleModal} messageType = {this.state.messageType} header = {this.state.messageHead} body = {this.state.messageBody}/>
         }
         <Contact></Contact>
       </div>
@@ -71,8 +76,10 @@ class Home extends React.Component {
   componentDidMount() {
     const {dispatch} = this.props;
     // dispatch({type:ACTION.HOME.GETHOME});
+    // window.scroll(0,0);
     dispatch({type : ACTION.HOME.GETHOME, data : null});
    //dispatch(push('/about')); //to navigate to a different route
+  //  this.scrollToPosition();
   }
 }
 
