@@ -15,7 +15,14 @@ class Template2 extends React.Component {
     };
   }
 
-  
+  scrollSpy = () =>{
+      "use strict"; // Start of use strict
+      console.log('scroll');
+      // Activate scrollspy to add active class to navbar items on scroll
+      $('body').scrollspy({
+        target: '#sideNav'
+      });
+  }  
 
   render() {
     const user = this.props.home.user[0];
@@ -35,7 +42,7 @@ class Template2 extends React.Component {
             </button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav">
-                <li className="nav-item" onClick = {() => scrollToComponent(this.about, { offset: 0, align: 'top', duration: 1000})}>
+                <li className={"nav-item"} onClick = {() => scrollToComponent(this.about, { offset: 0, align: 'top', duration: 1000})}>
                     <span className="nav-link js-scroll-trigger">About</span>
                 </li>
                 <li className="nav-item" onClick = {() => scrollToComponent(this.experience, { offset: 0, align: 'top', duration: 1000})}>
@@ -187,7 +194,7 @@ class Template2 extends React.Component {
             </li>
           </ul>
 
-          <div className="subheading mb-3">Workflow</div>
+          <div className="subheading mb-3"></div>
           <ul className="fa-ul mb-0">
             {
               (user) && user.skills.map((skill,index) =>{
@@ -255,15 +262,17 @@ class Template2 extends React.Component {
   }
   componentDidMount() {
     window.scroll(0,0);
-    // document.addEventListener('scroll', (a) =>{
-    //   console.log(a);
-    // });
+    window.onLoad = () =>{
+      window.addEventListener('scroll',() => {this.scrollSpy;});
+    };
     const {dispatch} = this.props;
     const userName = (new URL(window.location.href)).searchParams.get('username');
     dispatch({type : ACTION.HOME.GETHOME, data : userName});
+
+
   }
   componentWillUnmount() {
-    // document.removeEventListener('scroll', ()=>{});
+    window.removeEventListener('scroll', ()=>{});
   }
 }
 

@@ -10,7 +10,7 @@ import './carousel-component/carousel.less';
 import scrollToComponent from 'react-scroll-to-component';
 import Template from "./templates/template";
 import Contact from "./contact-us/contact";
-import {getCookie} from "../common/cookie";
+import {getCookie , deleteCookie} from "../common/cookie";
 import ModalPopup from '../common/components/modal-popup/modalPopup';
 
 class Home extends React.Component {
@@ -48,6 +48,11 @@ class Home extends React.Component {
     }
   }
 
+  newTemplate = () =>{
+    deleteCookie('username');
+    this.scrollToPosition();
+  }
+
   scrollToPosition = () =>{
     scrollToComponent(this.template, { offset: -100, align: 'top', duration: 1500});
   }
@@ -63,7 +68,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <NavBar scrollToPosition = {this.scrollToPosition}></NavBar>
+        <NavBar newTemplate = {this.newTemplate} scrollToPosition = {this.scrollToPosition}></NavBar>
         <Carousel dispatch = {this.props.dispatch}></Carousel>
         <Template ref={(Template) => { this.template = Template; }} goToTemplate = {this.goToTemplate}></Template>
         {

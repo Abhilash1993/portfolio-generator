@@ -41,6 +41,9 @@ class NavBar extends React.Component {
         <div className="collapse navbar-collapse" id="navbarResponsive">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
+              <a className="nav-link js-scroll-trigger" onClick = {this.props.newTemplate}>New</a>
+            </li>
+            <li className="nav-item">
               <a className="nav-link js-scroll-trigger" href="#about">About</a>
             </li>
             <li className="nav-item">
@@ -68,6 +71,9 @@ class NavBar extends React.Component {
         this.navbarCollapse();
       });
 
+  }
+  componentWillUnmount() {
+     window.removeEventListener('scroll', ()=>{this.navbarCollapse();});
   }
 }
 
