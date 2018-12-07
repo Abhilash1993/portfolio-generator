@@ -12,7 +12,9 @@ class Education extends Component {
                 degree : "",
                 startDate : "",
                 endDate : "",
-                location :""
+                location :"",
+                major : "",
+                GPA :""
             }],
             step : this.props.step
         };
@@ -71,6 +73,13 @@ class Education extends Component {
     back = () =>{
         this.props.back();
     }
+    componentWillReceiveProps(props){
+        if(props.portfolio.education && props.portfolio.education.length > 0){
+            this.setState({
+                university : props.portfolio.education
+            });
+        }
+    }
     render() {
 
         return (
@@ -119,6 +128,26 @@ class Education extends Component {
                                     focus = {false}/>
                             </div>
                             <div className = "university-details degree">
+                                    <InputComponent 
+                                        error = "" 
+                                        id = {"major."+index}
+                                        placeholder = {"Major"} 
+                                        value = {university.major} 
+                                        type = "text" 
+                                        changeHandler = {this.changeHandler} 
+                                        focus = {false}/>
+                            </div>
+                            <div className = "university-details degree">
+                                    <InputComponent 
+                                        error = "" 
+                                        id = {"GPA."+index}
+                                        placeholder = {"GPA"} 
+                                        value = {university.GPA} 
+                                        type = "text" 
+                                        changeHandler = {this.changeHandler} 
+                                        focus = {false}/>
+                            </div>
+                            <div className = "university-details degree">
                                <InputComponent 
                                 error = "" 
                                 id = {"startDate."+index }
@@ -129,14 +158,14 @@ class Education extends Component {
                                 focus = {false}/>
                             </div>
                             <div className = "university-details degree">
-                                    <InputComponent 
-                                        error = "" 
-                                        id = {"endDate."+index}
-                                        placeholder = {"End date"} 
-                                        value = {university.endDate} 
-                                        type = "text" 
-                                        changeHandler = {this.changeHandler} 
-                                        focus = {false}/>
+                                <InputComponent 
+                                    error = "" 
+                                    id = {"endDate."+index}
+                                    placeholder = {"End date"} 
+                                    value = {university.endDate} 
+                                    type = "text" 
+                                    changeHandler = {this.changeHandler} 
+                                    focus = {false}/>
                             </div>
                         </div>
                     );
