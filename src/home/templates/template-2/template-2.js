@@ -48,6 +48,9 @@ class Template2 extends React.Component {
                 <li className="nav-item" onClick = {() => scrollToComponent(this.experience, { offset: 0, align: 'top', duration: 1000})}>
                     <span className="nav-link js-scroll-trigger">Experience</span>
                 </li>
+                <li className="nav-item" onClick = {() => scrollToComponent(this.projects, { offset: 0, align: 'top', duration: 1000})}>
+                    <span className="nav-link js-scroll-trigger">Projects</span>
+                </li>
                 <li className="nav-item" onClick = {() => scrollToComponent(this.education, { offset: 0, align: 'top', duration: 1000})}>
                     <span className="nav-link js-scroll-trigger">Education</span>
                 </li>
@@ -120,6 +123,30 @@ class Template2 extends React.Component {
           }
         </div>
 
+      </section>
+
+      <hr></hr>
+
+      <section className="resume-section p-3 p-lg-5 d-flex flex-column" ref={(section) => { this.projects = section; }} id="projects">
+        <div className="my-auto">
+          <h2 className="mb-5 header2">Projects</h2>
+          {
+            (user) && user.projects.map((project,index) =>{
+              return (
+                <div key = {index} className="resume-item d-flex flex-column flex-md-row mb-5">
+                  <div className="resume-content mr-auto">
+                    <h3 className="mb-0 header3">{project.title}</h3>
+                    <p>{project.details}</p>
+                  </div>
+                  <div className="resume-date text-md-right">
+                    <span className="text-primary">{project.date}</span>
+                  </div>
+                </div>
+              );
+            })
+          }
+
+        </div>
       </section>
 
       <hr className="m-0"></hr>
