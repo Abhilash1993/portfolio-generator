@@ -41,11 +41,13 @@ class Skills extends Component {
         e.stopPropagation();
         let skills = this.state.skills.slice();
         skills.push(this.state.name);
-        this.setState({
-            skills,
-            name : "",
-            error : ""
-        });
+        if(this.state.name !=""){
+            this.setState({
+                skills,
+                name : "",
+                error : ""
+            });
+        }
     }
     removeSkill = (index) =>{
         let skills = this.state.skills.slice();
@@ -60,6 +62,13 @@ class Skills extends Component {
             return true;
         }
         return false;
+    }
+    componentWillReceiveProps(props){
+        if(props.portfolio.skills && props.portfolio.skills.length > 0){
+            this.setState({
+                skills : props.portfolio.skills
+            });
+        }
     }
     render() {
         return (

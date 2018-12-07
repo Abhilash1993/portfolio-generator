@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import './preview.less';
 import ACTION from '../../common/action_constants';
+import Modal from "../../common/components/modal-popup/modalPopup";
+import { push } from 'react-router-redux';
+import scrollToComponent from 'react-scroll-to-component';
 
 class Preview extends Component {
     constructor(props){
         super(props);
-        this.state = {
-            
-       };
     }
     back = () =>{
         this.props.back();
@@ -17,10 +17,18 @@ class Preview extends Component {
         const {dispatch} = this.props;
         dispatch({type : ACTION.PORTFOLIO.SEND_DATA, data: this.props.portfolio });
     }
+    goToHome = () =>{
+        const {dispatch} = this.props;
+        dispatch({type : ACTION.PORTFOLIO.STATUS, data: false });
+        setTimeout(()=>{
+            $('html, body').animate({scrollTop: $('#portfolio').offset().top -100 }, 'slow');
+        },500);
+        dispatch(push('/'));
+    }
     render() {
-        console.log(this.props.portfolio , "From preview");
         return (
             <div>
+                {this.props.apiCall.status && <Modal toggleModal = {this.goToHome} messageType = "success" header = "Congratulations" body = "You can now choose the templatess"/>}
                 <div className = "title">
                     You are almost there!
                 </div>
@@ -46,7 +54,8 @@ class Preview extends Component {
 
 const mapStateToProps = state => {
     return {
-        portfolio: state.portfolio
+        portfolio: state.portfolio,
+        apiCall : state.apiCall
     };
   };
 export default connect(mapStateToProps)(Preview);
