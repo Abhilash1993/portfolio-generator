@@ -82,18 +82,25 @@ class Template2 extends React.Component {
             </div>
             <p className="lead mb-5">{user.about.interests}</p>
             <div className="social-icons">
-              <a href="#">
-                <i className="fab fa-linkedin-in"></i>
-              </a>
-              <a href="#">
-                <i className="fab fa-github"></i>
-              </a>
-              <a href="#">
-                <i className="fab fa-twitter"></i>
-              </a>
-              <a href="#">
-                <i className="fab fa-facebook-f"></i>
-              </a>
+              {
+                (user) && (user.about.URLs.length!=0) && 
+                user.about.URLs.map((mediums)=>{
+                  return(
+                    <span>
+                      {
+                      (mediums.title == "LinkedIn") && 
+                      <a href={mediums.url}>
+                        <i className="fab social fa-linkedin-in"></i>
+                      </a>
+                    }
+                      {(mediums.title == "GitHub") && <a href={mediums.url}>
+                        <i className="fab social fa-github"></i>
+                      </a>}
+                    
+                    </span>
+                  );
+                })
+              }
             </div>
           </div>
       }
