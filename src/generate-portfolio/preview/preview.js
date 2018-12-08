@@ -28,7 +28,7 @@ class Preview extends Component {
     render() {
         return (
             <div>
-                {this.props.apiCall.status && <Modal toggleModal = {this.goToHome} messageType = "success" header = "Congratulations" body = "You can now choose the templatess"/>}
+                {this.props.apiCall.status && <Modal toggleModal = {this.goToHome} messageType = "success" header = "Congratulations" body = "Plese choose the templates the next screen. And don't forget to copy the URL and share to people!"/>}
                 <div className = "title">
                     You are almost there!
                 </div>

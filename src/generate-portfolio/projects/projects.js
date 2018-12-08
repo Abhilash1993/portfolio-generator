@@ -33,7 +33,7 @@ next = () =>{
     const data = {
         projects : [...this.state.projects]
     };
-    if(this.validate()){
+    if(true){
         this.setState({
             error : ""
         });

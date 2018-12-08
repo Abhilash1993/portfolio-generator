@@ -13,7 +13,8 @@ class AboutMe extends Component {
             address : "",
             headline : "",
             interests : "",
-            step : this.props.step
+            step : this.props.step,
+            tip : true
         };
     }
     changeHandler = (id,value)=>{
@@ -47,6 +48,11 @@ class AboutMe extends Component {
             });
         }   
     }
+    close = () =>{
+        this.setState({
+            tip : false
+        });
+    }
     render() {
         return (
             <div className = "about-me-wrap">
@@ -59,6 +65,12 @@ class AboutMe extends Component {
                 <div>
                 <Progressbar percentage = {this.props.step/this.props.all*100}/>
                 </div>
+                {this.state.tip && <div className = "tip-section">
+                    <div className = "tip"></div>
+                    <div className = "tip-content">
+                    If you already have created your portfolio, please enter the below details. We will pull your data for next steps.<div className = "got-it"onClick = {this.close}>Got it!</div>
+                    </div>
+                </div>}
                 <div className = "details-wrap">
                     <div className = "details">
                         <div>
