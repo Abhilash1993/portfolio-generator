@@ -12,7 +12,8 @@ class ProfessionalExperience extends Component {
                 location : "",
                 role: "",
                 startDate : "",
-                endDate : ""
+                endDate : "",
+                details : ""
             }],
             step : this.props.step
         };
@@ -33,7 +34,8 @@ class ProfessionalExperience extends Component {
             location : "",
             role: "",
             startDate : "",
-            endDate : ""
+            endDate : "",
+            details : ""
         };
         professional_exp.push(temp_professional_exp);
         this.setState({
@@ -124,10 +126,22 @@ class ProfessionalExperience extends Component {
                                             id = {"role."+index} 
                                             placeholder = {"Role"} 
                                             value = {professional_exp.role} 
-                                            type = "textarea" 
+                                            type = "text" 
                                             changeHandler = {this.changeHandler} 
                                             focus = {false}/>
                                             </div>
+                                    </div>
+                                    <div className = "details">
+                                        <div>
+                                            <InputComponent 
+                                            error = "" 
+                                            id = {"details."+index} 
+                                            placeholder = {"Details"} 
+                                            value = {professional_exp.details} 
+                                            type = "textarea" 
+                                            changeHandler = {this.changeHandler} 
+                                            focus = {false}/>
+                                        </div>
                                     </div>
                                     <div className = "details">
                                         <div className = "dates">
