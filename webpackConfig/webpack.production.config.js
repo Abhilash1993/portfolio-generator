@@ -43,7 +43,7 @@ const prodSpecifics = {
     new CompressionPlugin(),
     new CopyWebpackPlugin([{
       from: path.resolve('./assets/static'),
-      to: path.resolve('./dist')
+      to: path.resolve('./dist/assets')
     }])
   ],
   devtool: "cheap-module-source-map"
